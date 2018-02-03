@@ -1,4 +1,4 @@
-ExpressionEqualityComparer.
+# ExpressionEqualityComparer.
 
 Wherever an IEqualityComperer<T> is used, pass
 EqualityComparer.Create((t1, t2) => t1.AmIEqualTo(t2))
