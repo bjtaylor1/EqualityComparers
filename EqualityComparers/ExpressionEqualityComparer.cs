@@ -13,6 +13,11 @@ namespace EqualityComparers
 
         }
 
+        public static IEqualityComparer<T> Create<TCompVal>(Func<T, TCompVal> func)
+        {
+            return new ExpressionEqualityComparer<T>((t1, t2) => Equals(func(t1), func(t2)), t => func(t)?.GetHashCode() ?? 0);
+        }
+
         public static IEqualityComparer<T> Create(Func<T,T,bool> equal)
         {
             return new ExpressionEqualityComparer<T>(equal, t => t.GetHashCode());
